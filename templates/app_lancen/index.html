@@ -1,10 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load bootstrap5 %}
+
+
+
+{% block seo_meta %}
+    <meta name="description" content="Языковой центр Unilingvo: обучение иностранным языкам для взрослых и детей">
+    <meta name="keywords" content="центр изучения иностранных языков, языковой центр удельная, обучение английскому языку, unilingvo, иностранный язык, английский язык, помощь в изучении языка, репетитор по английскому спб, купить абонемент на английский, изучить иностранный язык">
+    <meta name="robots" content="index,follow">
+{% endblock seo_meta %}
+
+
+
+
 {% block fluid_window %}
-
-
-
 <section class = "index_slider pt-3 pb-3">
     <div class="container-fluid">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
