@@ -1,0 +1,21 @@
+
+
+.control_panel_link{
+
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 2px solid #17a2b8;
+    color: #17a2b8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 30px;
+}
+
+.control_panel_link:hover{
+    border: 2px solid orange;
+    color: orange;
+}

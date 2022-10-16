@@ -1,0 +1,34 @@
+{% load static %}
+
+
+<div class="row pt-5 pb-5">
+    <div class="col-lg-6 align-items-center">
+        
+        <img class = "d-block m-auto" style = "width:220px;"
+        
+        {% if student.photo %}
+        src="{{student.photo.url}}"
+        {% else %}
+        src="{% static 'app_profiles/img/profile.png' %}"
+        {% endif %}
+        alt="" srcset="">
+
+        <div class="mt-5 text-center">
+            <a class = "btn my_bg_info text-white" href="{% url 'profiles:edit_student' student.id %}"> Редактировать профиль</a>
+            <a class = "btn btn-outline-info" href="{% url 'profiles:change_password' %}">Сменить пароль</a>
+        </div>
+        
+    </div>
+    <div class="col-lg-6">
+        <p><b>Имя пользователя:</b> {{student.username}}</p>
+        <p><b>Фамилия:</b> {{student.first_name}}</p>
+        <p><b>Имя:</b> {{student.last_name}}</p>
+        <p><b>Почта:</b> {% if student.email %} {{student.email}} {% else %} -- {% endif %} </p>
+        <p><b>Уровень:</b> {{student.level}}</p>
+
+        <hr>
+        <p><b>Группа:</b> {{student.group.name}}</p>
+        <p><b>Программа группы:</b> {{student.group.description}}</p>
+        
+    </div>
+</div>

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load lancen_tags %}
+{% load static %}
+{% block fluid_window %}
+<section class = "s-courses mt-3 mb-3" style="background-image: url({% static 'app_lancen/img/training_programm.jpg' %});" >
+
+    <div class="container">
+        <div class="d-flex justify-content-end">
+            <h1 class = "text-white mobile-btn">Программы обучения</h1>
+        </div>
+    </div>
+
+   
+</section>
+
+{% endblock fluid_window %}
+
+
+
+{% block content %}
+
+    
+
+    {% for course in object_list %}
+
+        {% is_even forloop.counter as is_even %}
+
+        <section class = "pt-5 pb-5">
+            <div class="my_container">
+                <div class="row ">
+                    {% if not is_even %}
+                    
+                    <div class="col-lg-6">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <img class = "course_image" src="{{course.photo.url}}"  >
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <div>
+                                <h3>{{course.name}} </h3>
+                                <p class = "mt-5 pb-3">{{course.description|truncatewords:100}}</p>
+                                <a href=" {% url 'lancen:course_view' course.id %}" class = "btn my_bg_info text-white ">Узнать цену</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+
+                    <div class="col-lg-6">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <div>
+                                <h3>{{course.name}} </h3>
+                                <p class = "mt-5 pb-3">{{course.description|truncatewords:100}}</p>
+                                <a href=" {% url 'lancen:course_view' course.id %}" class = "btn my_bg_info text-white ">Узнать цену</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img class = "course_image" src="{{course.photo.url}}"  >
+                        </div>
+                    </div>
+                    
+                    
+                    {% endif %}
+                    
+                </div>
+            </div>
+            
+        </section>
+        
+    {% empty %}
+
+        <h3> Программы обучения ещё не добавлены</h3>
+    {% endfor %}
+
+
+{% endblock content %}
+
+

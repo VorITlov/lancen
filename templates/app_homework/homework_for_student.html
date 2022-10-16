@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load lancen_tags %}
+
+{% block content %}
+
+{% breadcrums breadcrumbs %}
+
+
+{% block javascritpt %}
+<script>
+    function myDate(date){
+        let first_date = new Date(date);
+        let plus_seven = first_date.setDate(first_date.getDate()+6);
+        const options = {  year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(plus_seven).toLocaleDateString('ru', options);
+    }
+</script>
+
+{% endblock javascritpt %}
+
+
+<section class = "pt-5 pb-3">
+
+    <p><b>Сегодня: </b>{% now "DATE_FORMAT" %}</p>
+    <p><b>Начало недели: </b> {{week|date}}</p>
+    <p><b>Конец недели: </b> <script>document.write(myDate("{{week|date:"Y-m-d"}}"));</script></p>
+
+    <div style = "overflow:auto;">
+    
+    
+        <table class = "table table-light table-hover table-bordered  mt-5">
+            <tr>
+                <th>Название дз</th>
+                <th>Комментарий к домашнему заданию</th>
+                <th>Дата</th>
+                {% comment %} <th>Дней на выполнение</th> {% endcomment %}
+                <th>Файлы</th>
+                <th>Группа</th>
+            </tr>
+            {% for item in  object_list %}
+    
+    
+            {% empty %}
+            <tr>
+                <td>--</td>
+                <td>--</td>
+                <td>--</td>
+                
+                <td>--</td>
+                <td>--</td>
+            </tr>
+            {% endfor %}
+    
+        </table>
+    </div>
+
+    <p class = " text-center mt-5">
+        
+        {% if previous_week %}
+            <a class = "btn btn-outline-info" href="{% url 'homework:homework_list_student' previous_week|date:"Y"  previous_week|date:"W" %} ">К предыдущей недели</a>
+        {% endif %}
+        {% if previous_week and next_week %}--{% endif %}
+        {% if next_week %}  
+            <a class = "btn btn-outline-info" href="{% url 'homework:homework_list_student' next_week|date:"Y"  next_week|date:"W" %} ">К следующей недели</a>
+        {% endif %}
+    </p> 
+
+
+</section>
+
+{% endblock content %}
+
+

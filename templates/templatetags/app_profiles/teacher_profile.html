@@ -1,0 +1,32 @@
+{% load static %}
+
+
+
+
+<div class="row pt-5 pb-5">
+    <div class="col-lg-6 align-items-center">
+        
+        <img class = "d-block m-auto" style = "width:230px;"
+        
+        {% if teacher.photo %}
+        src="{{teacher.photo.url}}"
+        {% else %}
+        src="{% static 'app_profiles/img/profile.png' %}"
+        {% endif %}
+        alt="teacher.photo" srcset="">
+
+        <div class="mt-5 text-center">
+            <a class = "btn my_bg_info text-white" href="{% url 'profiles:change_password' %}"> Сменить пароль</a>
+        </div>
+        
+    </div>
+    <div class="col-lg-6">
+        <p><b>Имя пользователя:</b> {{teacher.username}}</p>
+        <p><b>Фамилия:</b> {{teacher.first_name}}</p>
+        <p><b>Имя:</b> {{teacher.last_name}}</p>
+        <p><b>Почта:</b> {% if teacher.email %} {{teacher.email}} {% else %} -- {% endif %} </p>
+        <hr>
+        <p><b>Стаж работы:</b>{{teacher.experience}} </p>
+        <p><b>Описание:</b> {{teacher.description}} </p>
+    </div>
+</div>

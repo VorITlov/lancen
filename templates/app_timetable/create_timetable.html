@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load lancen_tags %}
+
+
+{% block content %}
+
+
+{% breadcrums breadcrumbs %}
+
+<section class = "pb-5">
+
+    <h1>Автоматическое создание расписания</h1>
+
+    {% bootstrap_messages %}
+    <form method = "POST" class = "mt-5">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% comment %} {{form.as_p}} {% endcomment %}
+    
+        {% buttons %}
+        <button class = "btn my_bg_info text-white" type = "submit">Создать</button>
+        {% endbuttons %}
+    </form>
+
+ 
+
+
+</section>
+
+
+{% endblock content %}

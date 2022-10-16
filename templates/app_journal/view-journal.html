@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load app_journal_tags %}
+{% load lancen_tags %}
+{% load static %}
+
+{% block other_css %}
+<link rel="stylesheet" href="{% static 'app_journal/css/journal.css' %}">
+{% endblock other_css %}
+
+{% block content %}
+{% test as test %}
+{% comment %} {% is_was as is_was %} {% endcomment %}
+
+
+
+{% breadcrums breadcrumbs %}
+
+
+<section class = "s_journal pt-5 pb-5">
+
+    <p><b>Группа:</b> {{info_group.name}} </p>
+    <p><b>Временной период:</b> {{date_for_m_y|date:"F Y"}} г.</p>
+
+    
+
+
+    {% if object_list  %}
+    
+    
+
+    <div class="alert alert-info mt-5" role="alert">
+        <div class="info_square">Тут будет отображаться действия отметок об отметках посещаемости </div>
+    </div>
+    
+
+    <div class="journal_wrapper">
+        <table  class = " table-light  table-bordered align-middle mt-5 mb-5"> 
+            <tr>
+                <td rowspan ="2" style = "padding: 10px;">Даты занятий<br> список группы</td>
+                {% for lesson in object_list  %}
+                <td colspan="2"  class = "text-center">
+                    
+                    {{ lesson.date }}
+                    
+                </td> 
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for lesson in object_list  %}
+                <td class = "rotate">Посещаемость</td>
+                <td class = "rotate">Успеваемость</td> 
+                {% endfor %}
+        
+            </tr>
+        
+            {% for student in group_list  %}
+                <tr>
+                    <td style = "padding: 10px;">{{student.last_name}} {{student.first_name}}</td>
+    
+                    {% for lesson in object_list %}
+                        
+                        {% is_was id_student=student.id id_lesson=lesson.id as is_was %}
+    
+                        <td class = "text-center">
+                            <input 
+                            type="checkbox" name="" 
+                            id="inp_{{student.id}}_{{lesson.id}}" 
+                            onclick = "func(this,{{student.id}}, {{lesson.id}});"
+                            {% if is_was %}checked{% endif %}
+                            >
+                        </td>
+    
+                        {% get_marks student.id lesson.id as marks %}
+    
+                        <td class = "text-center">
+                            {% for m in marks  %}
+                                
+                                <div class = "mark_view" onclick = "update_mark({{m.id}} , {{lesson.group.id}}, {{lesson.date|date:"Y"}}, {{lesson.date|date:"m"}});">
+                                    {% mark_sum m.work_on_lesson m.behavior m.homework m.extra %}
+                                </div>
+                            {% empty %}
+                                <div class = "mark_view" onclick = "expose_mark({{student.id}},{{lesson.id}},'{{lesson.date|date:"Y-m-d"}}');">*</div>
+                            {% endfor %}
+                        </td>
+                    {% endfor %}
+    
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+    
+    
+    
+    
+    {% else %}
+    
+    <h6 class = "mt-5">В этом месяце нет занятий</h6>
+    {% endif %}
+    
+
+    <p class = "mt-5">
+        {% if previous_month %}
+            <a class = "btn btn-outline-info" href="{% url 'journal:view-journal' info_group.id previous_month|date:"Y" previous_month|date:"m" %}">Предыдущий месяц</a>
+        {% endif %}
+        {% if next_month %}
+        <a class = "btn btn-outline-info" href="{% url 'journal:view-journal' info_group.id next_month|date:"Y" next_month|date:"m" %}">Следующий месяц</a>
+        {% endif %}
+    </p>
+    
+
+
+</section>
+
+
+<div class="modal fade" id="modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content"></div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
+
+
+{% block other_scripts %}
+<script src = "{% static 'app_journal/js/script.js' %}"></script>
+<script src = "{% static 'app_journal/js/mark.js' %}"></script>
+{% endblock other_scripts %}
+
+

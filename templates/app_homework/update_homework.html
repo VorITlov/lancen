@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load lancen_tags %}
+{% load bootstrap5 %}
+
+
+
+
+{% block content %}
+
+{% breadcrums breadcrumbs %}
+
+<section class = "pt-2 pb-5">
+
+    
+    <h1>Редактирование выданного дз</h1>
+
+    <form class = "mt-5" action="" method="post" enctype = "multipart/form-data">
+
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+
+        <h3>Файлы на данный момент</h3>
+        
+
+        {% for f in files  %}
+        <p class = "mt-3">
+            <a href="{{f.file.url}}">{{f.file.url}}</a> 
+            <a href="{% url 'homework:delete_file' f.id id_hw %}" class = "btn btn-danger">Удалить</a>
+        </p>
+        
+        {% empty %}
+
+        <p class = "mt-3">Отсутсвуют</p>
+        
+
+        {% endfor %}
+
+        <button type = "submit" class = "btn my_bg_info text-white">Сохранить</button>
+    </form>
+</section>
+{% endblock %}

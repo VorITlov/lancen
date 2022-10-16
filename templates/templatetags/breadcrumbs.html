@@ -1,0 +1,20 @@
+{% comment %} <h1>Шаблонный тег</h1> {% endcomment %}
+<section class = "mt-3 pt-3 pb-2 ">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {% for item in breadcrumbs  %}
+               {% comment %} {{ forloop.counter }} {% endcomment %}
+                <li class="breadcrumb-item {% if forloop.last %} active{% endif %}" {% if forloop.last %}  aria-current="page"{% endif %} >
+                    {% if not  forloop.last %}
+
+                        <a  class="my_color_info" style = "text-decoration: none;" href="{{item.link}}">{{item.title}}</a>
+    
+                    {% else %}
+                    {{item.title}}
+                    {% endif %}
+                    
+                </li>
+            {% endfor %}
+        </ol>
+    </nav>
+</section>

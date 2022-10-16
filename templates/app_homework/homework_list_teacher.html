@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load lancen_tags %}
+{% load app_homework_tags %}
+{% load bootstrap5 %}
+
+
+
+
+
+
+
+{% block content %}
+
+{% breadcrums breadcrumbs %}
+
+<section class = "pb-5 pt-1">
+
+
+    <h1>{{title}}</h1>
+
+    <div class="row mt-5">
+        <div class="col-lg-6">
+            <a class = "btn my_bg_info text-white"  href="{% url 'homework:expose_homework' %}">Выдать домашнее задание</a>
+        </div>
+        <div class="col-lg-6">
+            <form action="" method="get">
+                {% for f in order_by_group_form  %}{{f.label}} {{ f.errors }}{% endfor %}
+                <div class="input-group mb-3">
+                    {% for f in order_by_group_form  %}{{f}}{% endfor %}
+                    <a href="{% url 'homework:homework_list' %}" class="btn btn-outline-secondary">Сбросить</a>
+                    <button class="btn my_bg_info text-white" type="submit">Сортировать</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+
+
+    <div style = "overflow:auto;">
+    
+    
+        <table class = "table table-light table-hover table-bordered  mt-5">
+            <tr>
+                <th>Название дз</th>
+                <th>Комментарий к домашнему заданию</th>
+                <th>Дата</th>
+                {% comment %} <th>Дней на выполнение</th> {% endcomment %}
+                <th>Файлы</th>
+                <th>Группа</th>
+                <th>Действие</th>
+
+            </tr>
+            {% for item in  object_list %}
+    
+    
+            <tr>
+                <td>{{item.name}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.date}}</td>
+                {% comment %} <td>{{item.amount_day}}</td> {% endcomment %}
+                <td>
+                    {% get_files item.id as files %}
+
+                    {% for f in  files %}
+                        <a href="{{f.file.url}}">{{f.file.url}}</a>
+                    {% empty %}
+                    --
+                    {% endfor %}
+
+                </td>
+                <td>{{item.journal_list.group}}</td>
+                <td> 
+                    <a href="{% url 'homework:update_homework' item.id %}">Редактировать</a> 
+                    <br> 
+
+                    <div style = "color:red; cursor:pointer;" onclick = "delete_hw({{item.id}})">Удалить</div>
+                </td>
+            </tr>
+    
+            {% empty %}
+    
+            <tr>
+                <td>--</td>
+                <td>--</td>
+                <td>--</td>
+            </tr>
+            {% endfor %}
+    
+        </table>
+    </div>
+
+    
+    <div class="pagination mt-5">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a class = "btn btn-outline-info" href="?page=1">&laquo; К первой странице</a>
+                <a class = "btn my_bg_info text-white" href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+            {% endif %}
+    
+            <span class="current">
+                Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a class = "btn my_bg_info text-white" href="?page={{ page_obj.next_page_number }}">Следующая</a>
+                <a class = "btn btn-outline-info" href="?page={{ page_obj.paginator.num_pages }}">На последнюю страницу &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+
+
+</section>
+
+
+<div class="modal fade" id="modalDelHw" tabindex="-1" aria-labelledby="modalDelHwLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalDelHwLabel">Мы вам перезвоним</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form  onsubmit = "return:false;" id = "recallForm">
+                    {% csrf_token %}
+                    {% bootstrap_form recall_form %}
+                </form>
+               
+                <p>Или позвоните нам <br>
+                    <span class = "fs-4">8(912)123-12-12</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn my_bg_info text-white">Отправить</button>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+
+{% block other_scripts %}
+
+    <script src = "{% static 'app_homework/js/script.js' %}"></script>
+
+
+{% endblock other_scripts %}

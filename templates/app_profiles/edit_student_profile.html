@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load lancen_tags %}
+
+
+
+
+{% block content %}
+
+{% breadcrums breadcrumbs %}
+
+<section class = "pt-5 pb-5">
+    <form action="" method="post" enctype = "multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type = "submit" class = "btn my_bg_info text-white">Сохранить</button>
+    </form>
+</section>
+
+{% endblock content %}

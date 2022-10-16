@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load app_journal_tags %}
+{% load lancen_tags %}
+
+{% load static %}
+
+{% block other_css %}
+<link rel="stylesheet" href="{% static 'app_journal/css/journal.css' %}">
+{% endblock other_css %}
+
+
+{% block content %}
+
+
+{% breadcrums breadcrumbs %}
+
+<section class = "pb-5 pt-5">
+
+    <h1>Список приобретённых абонементов</h1>
+
+
+    <div class="journal_wrapper">
+    
+    
+        <table class = "table table-light table-hover mt-5">
+            <tr>
+                <th>Название </th>
+                <th>Кол-во занятий</th>
+                <th>Цена</th>
+                <th>Дата оплаты</th>
+                <th>Дата старта</th>
+                <th>Скидка</th>
+            </tr>
+            {% for item in  object_list %}
+    
+    
+            <tr>
+                <td>{{item.abonement.name}}</td>
+                <td>{{item.abonement.amount_lesson}}</td>
+                <td>{{item.abonement.price}}</td>
+                <td>{{item.date_payment}}</td>
+                <td>{{item.date_start}}</td>
+                <td>{{item.discount}}</td>
+
+            </tr>
+    
+    
+    
+            {% empty %}
+    
+            <tr>
+                <td>--</td>
+                <td>--</td>
+                <td>--</td>
+                <td>--</td>
+                <td>--</td>
+                <td>--</td>
+            </tr>
+            {% endfor %}
+    
+        </table>
+    </div>
+    
+    <div class="pagination mt-5">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a class = "btn btn-outline-info" href="?page=1">&laquo; К первой странице</a>
+                <a class = "btn my_bg_info text-white" href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+            {% endif %}
+    
+            <span class="current">
+                Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a class = "btn my_bg_info text-white" href="?page={{ page_obj.next_page_number }}">Следующая</a>
+                <a class = "btn btn-outline-info" href="?page={{ page_obj.paginator.num_pages }}">На последнюю страницу &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+
+
+</section>
+
+
+
+
+{% endblock content %}
+
+
+

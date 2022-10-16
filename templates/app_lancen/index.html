@@ -1,0 +1,290 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% block fluid_window %}
+
+
+
+<section class = "index_slider pt-3 pb-3">
+    <div class="container-fluid">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="slide_img" style = "background-image: url('{% static 'app_lancen/img/slider_children.jpg' %}');">
+
+                        <div class="container">
+                            <div class="d-flex justify-content-lg-arУзнать ценуound justify-content-md-around justify-content-center">
+                                <div class="text_block">
+                                    <h1 class = "mt-5 mb-5 text-white mobile-btn">Занятия с детьми</h1>
+                                    {% comment %} <a href="{% url 'lancen:courses_list' %}" class="btn custom_btn d-sm-none">Читать подробнее</a> {% endcomment %}
+                                </div>
+                                <div class="empty_block"></div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="slide_img" style = "background-image: url('{% static 'app_lancen/img/slider_tinager.jpg' %}');">
+                        <div class="d-flex justify-content-lg-around justify-content-md-around justify-content-center">
+                            <div class="text_block">
+                                <h1 class = "mt-5 mb-5 text-white mobile-btn">Занятия с подростками</h1>
+                                {% comment %} <a href="{% url 'lancen:courses_list' %}" class="btn custom_btn d-lg-block d-sm-none">Читать подробнее</a> {% endcomment %}
+                            </div>
+                            <div class="empty_block"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="slide_img" style = "background-image: url('{% static 'app_lancen/img/slider_olders.jpg' %}');">
+                        <div class="d-flex justify-content-lg-around justify-content-md-around justify-content-center">
+                            <div class="text_block">
+                                <h1 class = "mt-5 mb-5 text-white mobile-btn">Занятия со взрослыми</h1>
+                                {% comment %} <a href="{% url 'lancen:courses_list' %}" class="btn custom_btn d-lg-block  d-sm-none">Читать подробнее</a> {% endcomment %}
+                            </div>
+                            <div class="empty_block"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+{% endblock fluid_window %}
+
+
+{% block content %}
+
+
+<section class = "pt-5 pb-5 text-center">
+   
+    <h1 class = "my_color_info animate_block">Что такое языковой центр?</h1>
+    <p class = "mt-5 fs-6 animate_block">Языковой центр был открыт в 2016 году практикующими преподавателями иностранных языков. Именно опыт преподавания и понимание того, как должен быть выстроен процесс обучения иностранным языкам, осознание всей многогранности языков и их актуальности в современном мире, дает возможность школе развиваться в верном направлении.</p>
+    <p class = "animate_block">Какой бы язык Вы ни изучали в языковом центре: английский, немецкий, испанский или французский, Вы можете быть уверены, что достигнете своих целей! Ведь в UNILINGVO знают, в чем кроется секрет успешного изучения иностранных языков!</p>
+
+</section>
+
+
+<section class = "pt-5 pb-5">
+
+  
+    <div class="text-center">
+        <h1 class = "my_color_info animate_block">Наши преимущества</h1>
+        <p class = "mt-5 my_color_info animate_block">
+            Так в чем же секрет языкового центра?
+                Почему стоит пойти учиться в UNILINGVO? <br>
+            Об этом мы можем сказать в трех словах:</p>
+
+    </div>
+
+
+
+
+    
+    <nav class = "mt-5">
+        <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-learn-tab" data-bs-toggle="tab" data-bs-target="#nav-learn" type="button" role="tab" aria-controls="nav-learn" aria-selected="true">LEARN</button>
+            <button class="nav-link" id="nav-speak-tab" data-bs-toggle="tab" data-bs-target="#nav-speak" type="button" role="tab" aria-controls="nav-speak" aria-selected="false">SPEAK</button>
+            <button class="nav-link" id="nav-enjoy-tab" data-bs-toggle="tab" data-bs-target="#nav-enjoy" type="button" role="tab" aria-controls="nav-enjoy" aria-selected="false">ENJOY</button>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-learn" role="tabpanel" aria-labelledby="nav-learn-tab">
+            <div class="row">
+                <div class="col-lg-6 p-3">
+                    <img src="{% static 'app_lancen/img/learn.jpg' %}" alt="" class = "d-block m-auto" style = "width:80%;">
+                </div>
+                <div class="col-lg-6 my_color_info p-3 d-flex flex-column align-center justify-content-center">
+
+                        <div class="">
+                            <h2 class = "">Обучайся!</h2>
+                            <p class = "mt-5">Обучение - платформа для успешного личностного развития и профессионального роста. Решение учиться – первый шаг на серьёзном пути, а вложение в себя – лучшая инвестиция. Обучаясь, мы создаём условия для раскрытия нашего творческого потенциала и самореализации в различных сферах жизни: в семье, работе, учёбе, творчестве, увлечениях. Ставьте амбициозные цели!</p>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-speak" role="tabpanel" aria-labelledby="nav-speak-tab">
+            <div class="row">
+                <div class="col-lg-6 p-3">
+                    <img src="{% static 'app_lancen/img/speak.jpg' %}" alt="" class = "d-block m-auto" style = "width:80%;">
+                </div>
+                <div class="col-lg-6 my_color_info p-3 d-flex flex-column align-center justify-content-center">
+
+                        <div class="">
+                            <h2 class = "">Общайся!</h2>
+                            <p class = "mt-5">
+                                Практика – важная часть обучения. Основная задача учителя - создать ситуацию успешности, чтобы каждый мог свободно говорить на изучаемом языке. Мы дарим свободу общения, не ограниченную языковым барьером,
+                                и способствуем интеллектуальному, культурному, профессиональному, социальному развитию и росту.
+                            </p>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-enjoy" role="tabpanel" aria-labelledby="nav-enjoy-tab">
+            <div class="row">
+                <div class="col-lg-6 p-3">
+                    <img src="{% static 'app_lancen/img/enjoy.jpg' %}" alt=""class = "d-block m-auto" style = "width:80%;">
+                </div>
+                <div class="col-lg-6 my_color_info p-3 d-flex flex-column align-center justify-content-center">
+
+                        <div class="">
+                            <h2 class = "">Наслаждайся!</h2>
+                            <p class = "mt-5">
+                                Отпразднуем наши победы! Вы прошли долгий путь: приняли решение начать учиться, вложились в себя, приобрели новые знания, потратили на это много времени и сил. И вот настал момент, когда мы готовы радоваться вместе Вашим успехам и достижениям!
+                                Получайте удовольствие от свободы общения на иностранных языках!
+                            </p>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 
+
+
+
+<section class = "pt-5 pb-5">
+    <div class="container">
+        <div class="d-flex justify-content-lg-between justify-content-sm-center justify-content-center flex-wrap my_color_info">
+            <div class="item_card text-center mt-5 animate_block" style = "width:270px;">
+                <img src="{% static 'app_lancen/img/pers_podhod.PNG' %} " alt="" class = "d-block m-auto" style = "width:75px;">
+                <h5 class = "font-weight-bold mt-4">ИНДИВИДУАЛЬНЫЙ ПОДХОД</h5>
+            </div>
+            <div class="item_card text-center mt-5 animate_block" style = "width:270px;">
+                <img src="{% static 'app_lancen/img/message_icon.jpg' %}" alt="" class = "d-block m-auto" style = "width:75px;">
+                <h5 class = "font-weight-bold mt-4">КВАЛИФИЦИРОВАННЫЕ ПРЕПОДАВАТЕЛИ</h5>
+            </div>
+            <div class="item_card text-center mt-5 animate_block" style = "width:270px;">
+                <img src="{% static 'app_lancen/img/timetable.jpg' %}" alt="" class = "d-block m-auto" style = "width:75px;">
+                <h5 class = "font-weight-bold mt-4">ГИБКОЕ РАСПИСАНИЕ</h5>
+            </div>
+            <div class="item_card text-center mt-5 animate_block" style = "width:270px;">
+                <img src="{% static 'app_lancen/img/note_icon.jpg' %}" alt="" class = "d-block m-auto" style = "width:75px;">
+                <h5 class = "font-weight-bold mt-4">МЕТОДИЧЕСКАЯ ПОДДЕРЖКА</h5>
+            </div>
+            <div class="item_card text-center mt-5 animate_block" style = "width:270px;">
+                <img src="{% static 'app_lancen/img/sun_and_cloud.jpg' %}" alt="" class = "d-block m-auto" style = "width:75px;">
+                <h5 class = "font-weight-bold mt-4">ОБУЧЕНИЕ БЕЗ СТРЕССА</h5>
+            </div>
+            <div class="item_card text-center mt-5 animate_block" style = "width:270px;">
+                <img src="{% static 'app_lancen/img/practick.jpg' %}" alt="" class = "d-block m-auto" style = "width:75px;">
+                <h5 class = "font-weight-bold mt-4">УПОР НА ПРАКТИКУ</h5>
+            </div>
+            <div class="item_card text-center mt-5 animate_block" style = "width:270px;">
+                <img src="{% static 'app_lancen/img/meropr.jpg' %}" alt="" class = "d-block m-auto" style = "width:75px;">
+                <h5 class = "font-weight-bold mt-4">МЕРОПРИЯТИЯ И ПРАЗДНИКИ</h5>
+            </div>
+            <div class="item_card text-center mt-5 animate_block" style = "width:270px;">
+                <img src="{% static 'app_lancen/img/joistick.jpg' %}" alt="" class = "d-block m-auto" style = "width:75px;">
+                <h5 class = "font-weight-bold mt-4">КОНКУРСЫ</h5>
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+
+<section class = "country_wrapper pt-5 pb-5">
+    
+    <div class="d-flex justify-content-lg-between justify-content-sm-center justify-content-center flex-wrap mt-5">
+
+        <div class="country_item_wrapper">
+            <div class="country border border-info rounded-circle">
+                <img src="{% static 'app_lancen/img/flag_en.png' %}" class = "img-fluid" alt="">
+            </div>
+        </div>
+        <div class="country_item_wrapper">
+            <div class="country border border-info rounded-circle">
+                <img src="{% static 'app_lancen/img/italy.png' %}" class = "img-fluid" alt="">
+            </div>
+        </div>
+        <div class="country_item_wrapper">
+            <div class="country border border-info rounded-circle">
+                <img src="{% static 'app_lancen/img/flag_germ.png' %}" class = "img-fluid" alt="">
+            </div>
+        </div>
+        <div class="country_item_wrapper">
+            <div class="country border border-info rounded-circle">
+                <img src="{% static 'app_lancen/img/flag_spain.png' %}" class = "img-fluid" alt="">
+            </div>
+        </div>
+    </div>
+   
+</section>
+
+
+
+{% endblock content %} 
+
+
+
+{% block fluid_window_bottom %}
+
+<style>
+    .captcha{
+        margin-top:10px;
+        margin-bottom: 20px;
+    }
+</style>
+
+
+<section class="scroll_bg" style = "background-image: url({% static 'app_lancen/img/scroll_background.jpg' %});">
+   
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 col-sm-12">
+                <h3 class="text-info">From small beginnings come great things. (proverb)</h3>
+                <h2 class = "mt-5 text-white">ПОЛУЧИ СВОЮ ИНДИВИДУАЛЬНУЮ СКИДКУ!</h2>
+                <p class = "mt-5 text-white" style = "font-size:24px;">Языковой центр UNILINGVO продолжает набор детских и взрослых групп на курсы иностранных языков!</p>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="p-3 bg-white text-center rounded">
+                  
+                    <div class="free_lesson_form1">
+                        <h4>Записаться на пробное занятие</h4>
+                        <div class="freeLessonInfo alert alert-primary" role="alert">
+                            Заполните данные и нажмите на кнопку отправить
+                        </div>
+                        <form id = "freeLessonForm" class = "mt-5" onsubmit="return false">
+                            <div class="error_output"></div>
+                            
+                            {% csrf_token %}
+                            {% bootstrap_form form %}
+                            <button   id = "freeLessonBtn" class = "btn my_bg_info text-white">Отправить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+ 
+   
+
+</section>
+{% endblock fluid_window_bottom %}
+
+
+
+
+
+{% block other_scripts %}
+    <script src = "{% static 'app_lancen/js/free_lesson.js' %}"></script>
+{% endblock other_scripts %}

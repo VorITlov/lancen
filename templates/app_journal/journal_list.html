@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+{% load lancen_tags %}
+{% block content %}
+
+
+{% breadcrums breadcrumbs %}
+
+
+<section class = "pt-5 pb-5">
+    <h1>Журнальные листы</h1>
+
+
+    {% now "Y" as year %} {% now "m" as month %}
+
+
+
+
+    {% if object_list %}
+
+    <div class="d-flex justify-content-lg-between justify-content-center flex-wrap mt-5">
+
+    {% for journal in object_list  %}
+
+
+
+    <div class="card text-center" style = "width:280px;">
+        <div class="card-header" >
+          Журнал номер {{ journal.id }}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{journal.teacher.first_name}} {{journal.teacher.last_name}}</h5>
+          <p class="card-text">{{journal.group}} группа. </p>
+          <a class = "btn my_bg_info text-white" href="{% url 'journal:view-journal' journal.group.id year month  %} ">Перейти</a> <br>
+        </div>
+    </div>
+
+    {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <h3>Журнальные листы ещё не добавлены</h3>
+
+
+
+
+    {% endif %}
+
+
+
+
+</section>
+
+
+
+
+
+
+
+{% endblock content %}

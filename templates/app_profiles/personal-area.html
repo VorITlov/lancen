@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+
+{% load app_profiles_tags %}
+
+
+{% block other_css %}
+
+<link rel="stylesheet" href="{% static 'app_profiles/css/profile.css' %}">
+
+{% endblock other_css %}
+
+
+
+
+
+{% block content %}
+
+
+
+<section>
+
+    {%  teacher_or_student request.user.id as role_user %}
+
+    {% if role_user == "student" %} {% student_profile request.user.id %}{% endif %}
+
+    {% if role_user == "teacher" %} {% teacher_profile request.user.id %}{% endif %}
+
+</section>
+
+
+<section class = "pt-5 pb-5">
+
+    
+
+    <h3 class = "text-center">Действия доступные мне:</h3>
+
+    <div class="d-flex justify-content-lg-between justify-content-center flex-wrap mt-5">
+        {% for item in pers_area_items  %}
+            <a class = "control_panel_link" href="{% url item.link %}">{{item.title}}</a>
+        {% endfor %}
+    </div>
+</section>
+
+
+
+
+
+
+
+{% endblock content %}

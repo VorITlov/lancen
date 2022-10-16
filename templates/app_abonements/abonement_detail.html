@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load lancen_tags %}
+
+{% block content %}
+
+
+{% breadcrums breadcrumbs %}
+
+
+<section class = "pt-5 pb-5">
+    <div class="row">
+        <div class="col-lg-5">
+            <img src="{{object.photo.url}}" style = "width:80%;" alt="" srcset="">
+        </div>
+        <div class="col-lg-7">
+            <h3 class = "my_color_info">{{object.name}}</h3>
+            <p class = "mt-5">{{object.description}}</p>
+            <b>{{object.price}} руб.</b>
+            <p>Продолжительность: {{object.duration}}</p>
+            <p>Количесвто занятий: {{object.amount_lesson}}</p>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}
+
+

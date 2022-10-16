@@ -1,0 +1,16 @@
+.rotate{
+    transform: rotate(180deg);
+    writing-mode: vertical-rl;
+    width: 86px;
+    height: 200px;
+    text-align: center;
+}
+
+.mark_view{
+    cursor: pointer;
+}
+
+.journal_wrapper{
+    width:100%;
+    overflow: auto;
+}

@@ -1,0 +1,21 @@
+{% load bootstrap5 %}
+
+
+
+<div class="modal-header">
+    <div class="modal-title">
+        <h5>Редактирование оценки</h5>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <form method = "post" action = "{% url 'journal:update_mark' id_mark id_group year month %}">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+    
+        {% buttons %}
+            <button type = "submit" class = "btn my_bg_info text-white">Исправить</button>
+            <a class = "btn btn-outline-danger" onclick = "delete_mark({{id_mark}});">Удалить баллы</a>
+        {% endbuttons %}
+    </form>
+</div>

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load lancen_tags %}
+
+{% block content %}
+
+
+{% breadcrums breadcrumbs %}
+
+
+
+<section class = "s-abonements pt-5 pb-5">
+    <h1>Абонементы для 	&#171;{{object.name}} &#187;</h1>
+     <p class = "mt-5 pb-3">{{object.description}}</p>
+
+    <div class="d-flex justify-content-lg-around justify-content-center flex-wrap">
+        {% for abonement in abonements  %}
+        <div class="card mt-5" style="width: 18rem;">
+            <img src="{{abonement.photo.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title my_color_info">{{abonement.name}}</h5>
+              <p class="card-text">{{abonement.description | truncatewords:20 }}</p>
+              <a href="{% url 'abonements:abonement_detail' abonement.id %}" class="btn btn-info  text-white">Читать подробнее</a>
+            </div>
+        </div>
+            
+
+        {% empty %}
+
+        <h3>Абонементы к этому курсу ещё не добавлены</h3>
+        {% endfor %}
+    </div>
+
+    
+
+</section>
+
+
+{% endblock content %}
+
+

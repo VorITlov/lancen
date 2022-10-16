@@ -1,0 +1,10 @@
+User-Agent: *
+Disallow: /admin/
+Disallow: /profiles/
+Disallow: /journal/
+Disallow: /timetable/
+Disallow: /homework/
+
+Sitemap: https://project-0219-529.ru/sitemap.xml
+
+

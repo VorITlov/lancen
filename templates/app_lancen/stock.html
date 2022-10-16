@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block fluid_window %}
+
+<section class = "s-stock mt-3 mb-3"  style="background-image: url({% static 'app_lancen/img/stock.jpg' %})">
+
+    <div class="container">
+        <div class="d-flex justify-content-end">
+            <h1 class = "text-white mobile-btn">Акции <br>центра</h1>
+        </div>
+    </div>
+
+</section>
+
+{% endblock fluid_window %}
+
+{% block content %}
+
+<section class ="pt-5 pb-5">
+    <h3 class="text-center my_color_info">
+        Индивидуальный подход – это главное правило языкового центра UNILINGVO! <br>
+        Теперь Вы сами можете выбрать скидку!
+    </h3>
+    <div class="my_container">
+        <div class="row mt-5 align-items-center">
+            <div class="col-lg-6">
+                <h4 class = "my_color_green">Family-friendly:</h4>
+                <p class = "mt-3 my_color_info">
+                    При покупке абонемента на второго и последующего члена семьи Вы получаете скидку 400 рублей.
+                </p>
+
+                <h4 class = "my_color_green mt-4">Best-friends:</h4>
+                <p class = "mt-3 my_color_info">
+                    Если Ваш друг заключает договор на обучение в нашем центре, то за успешную рекомендацию Вы получаете 1500 рублей в виде скидки на свой последующий абонемент
+                </p>
+
+                <h4 class = "my_color_green mt-4">A Good Book:</h4>
+                <p class = "mt-3 my_color_info">
+                    Всем, кто успеет записаться на обучение с 31 августа по 7 сентября, дарим скидку 10% на комплект учебников.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <div class="img_stock_main" style = "background-image:url({% static 'app_lancen/img/stock_main.jpg' %});"></div>
+                
+            </div>
+        </div>
+    
+        <h3 class="text-center my_color_info mt-5">
+            Будьте в курсе всех новостей, подписывайтесь на нас в социальных сетях!
+        </h3>
+    </div>
+    
+        
+</section>
+
+
+
+
+{% endblock content %}
+
