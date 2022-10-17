@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from .forms import *
 from app_lancen.utils import *
 
 from django.urls.base import reverse
@@ -64,6 +65,9 @@ class StudentPaymentLesson(DataMixin, LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        context['sort_form'] = SortStudentAbonement(self.request.GET, stud = self.request.user)
+
+
         context['breadcrumbs'] = [
             {'link': reverse('profiles:personal_area'), 'title':'Личный кабинет'},
             {'link': '#', 'title': "Занятия доступные мне"}
@@ -73,4 +77,10 @@ class StudentPaymentLesson(DataMixin, LoginRequiredMixin, ListView):
         return dict(list(context.items()) + list(data_mixin_context.items()))
 
     def get_queryset(self):
-        return  StudentPaymenatLessons.objects.filter(payment_abonement__student = self.request.user).order_by('-lesson__date')
+        sort_param = self.request.GET.get("payment_ab")
+
+        if sort_param:
+            query = StudentPaymenatLessons.objects.filter(payment_abonement__student = self.request.user, payment_abonement = sort_param).order_by('-lesson__date')
+        else:
+            query = StudentPaymenatLessons.objects.filter(payment_abonement__student = self.request.user).order_by('-lesson__date')
+        return  query

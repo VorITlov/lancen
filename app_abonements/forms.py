@@ -5,6 +5,21 @@ from .models import *
 from django.core.exceptions import ValidationError
 
 
+
+class SortStudentAbonement(forms.Form):
+    """Сортирует занятия в абонементах для студентов"""
+    def __init__(self, *args, **kwargs):
+        #kwargs.pop('sort_param', None)
+        stud = kwargs.pop('stud', None)
+        super().__init__(*args, **kwargs)
+        choises = [
+            [payment_ab.id, f"{payment_ab.abonement.name} ({payment_ab.date_start.day}.{payment_ab.date_start.month}.{payment_ab.date_start.year})" ] for  payment_ab in  PaymentAbonement.objects.filter(student = stud)
+        ]
+        choises.insert(0,['', '---'])
+        self.fields['payment_ab'] = forms.ChoiceField(label="Оплата абонемента", choices=choises, required=False, widget=forms.Select(attrs={"class": "form-control"}))
+        
+
+   
 class PaymentAbonementForm(forms.ModelForm):
     class Meta:
         model = PaymentAbonement
@@ -18,8 +33,6 @@ class PaymentAbonementForm(forms.ModelForm):
             self.add_error(None, "Проверьте что расписание занятий создано верно")
 
 
-        # if not test():
-        #     self.add_error(None, "Ошибка")
     
 
 def search_lesson(student, date_start, abonement):
@@ -42,5 +55,8 @@ def create_lesson(lessons_list, abonement):
         print("У пользователя сохранилось оплаченное занятие")
     return False
 
-def test():
-    return False
+
+
+
+
+

@@ -3,6 +3,7 @@ import datetime
 
 from app_lancen.models import *
 from .models import TimeTable
+from django.core.exceptions import ValidationError
 
 class DateInputWidget(forms.DateInput):
     input_type = 'date'
@@ -58,11 +59,17 @@ class CreateTimetableForm(forms.Form):
     diap = forms.ChoiceField(choices=choices_diap_day , label="на какой период создаётся расписание")
 
 
-    # def test_get_data(self, *args):
-    #     print(f"{args}")
+    def clean_day(self):
+        data = self.cleaned_data["day"]
+        
+        if len(data) != 2:
+            raise ValidationError("Должно быть выбрано 2 дня недели")
+        
+        return data
+   
 
     def create_timetable(self, start_date, amount_itteration , day_index, group):
-        # print(f"{start_date} , {amount_itteration}, {day_index}")
+        """автоматически создаёт расписание"""
         count = 0
         iter_day = start_date
         group_model = LearingGroup.objects.get(pk = group)
