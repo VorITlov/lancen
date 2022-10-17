@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% load lancen_tags %}
 {% load static %}
+
+
+{% block seo_meta %}
+    <meta name="description" content="Вы можете найти программы обучения на все уровни знаний и незнаний английского языка. Программы обучения также предназначены на разные возрастные категории, что будет доступно как для взрослых, так и для детей.">
+    <meta name="robots" content="index,follow">
+{% endblock seo_meta %}
+
+
 {% block fluid_window %}
 <section class = "s-courses mt-3 mb-3" style="background-image: url({% static 'app_lancen/img/training_programm.jpg' %});" >
 

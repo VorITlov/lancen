@@ -10,20 +10,23 @@ from django.urls.base import reverse
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
+
 class AbonementDeatil(DataMixin, DetailView):
+    """Отображает информацию об абонементе"""
+
     model = Abonement
     template_name = "app_abonements/abonement_detail.html"
 
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-
         abonement = Abonement.objects.get(id = self.kwargs["pk"])
+        course = TrainingProgramm.objects.get(id = self.kwargs["id_course"])
 
         context['breadcrumbs'] = [
             {'link': reverse('lancen:index'), 'title':'Главная'},
             {'link': reverse('lancen:courses_list'), 'title':'Программы обучения'},
-            {'link': reverse('lancen:course_view', args=[abonement.course.id]),'title':abonement.course.name},
+            {'link': reverse('lancen:course_view', args=[course.id]),'title': course.name},
             {'link' : '#', 'title': str(abonement.name)}
         ]
 

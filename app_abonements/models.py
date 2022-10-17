@@ -15,7 +15,7 @@ class Abonement(models.Model):
     price = models.IntegerField(verbose_name="Стоимость абонемента (руб.)")
     duration = models.CharField(verbose_name="Продолжительность 1 занятия", max_length=255)
     description  = models.TextField(verbose_name="Описание")
-    course = models.ForeignKey(TrainingProgramm, on_delete=models.CASCADE, verbose_name="К какому курсу")
+    course = models.ManyToManyField(TrainingProgramm, verbose_name="К какому курсу", related_name='abonement_courses')
     photo = models.ImageField(verbose_name="Фото", upload_to=get_file_path)
 
 

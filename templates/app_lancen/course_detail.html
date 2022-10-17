@@ -9,17 +9,16 @@
 
 
 <section class = "s-abonements pt-5 pb-5">
-    <h1>Абонементы для 	&#171;{{object.name}} &#187;</h1>
-     <p class = "mt-5 pb-3">{{object.description}}</p>
+    <h1 class="">Абонементы к  курсу "{{object.name}}"</h1>
 
-    <div class="d-flex justify-content-lg-around justify-content-center flex-wrap">
+    <div class="d-flex justify-content-lg-around justify-content-center flex-wrap mt-5">
         {% for abonement in abonements  %}
-        <div class="card mt-5" style="width: 18rem;">
+        <div class="card" style="width: 18rem;">
             <img src="{{abonement.photo.url}}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title my_color_info">{{abonement.name}}</h5>
               <p class="card-text">{{abonement.description | truncatewords:20 }}</p>
-              <a href="{% url 'abonements:abonement_detail' abonement.id %}" class="btn btn-info  text-white">Читать подробнее</a>
+              <a href="{% url 'abonements:abonement_detail' abonement.id object.id %}" class="btn btn-info  text-white">Читать подробнее</a>
             </div>
         </div>
             
