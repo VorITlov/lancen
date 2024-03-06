@@ -25,7 +25,7 @@ SITE_ID = 1
 SECRET_KEY = 'django-insecure-ok*hmrgcyun#dj)_5=e-uf&u^*8z7j+un8rdyfsx=514aen%!0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 CSRF_TRUSTED_ORIGINS=['https://project-0219-529.ru']
 ALLOWED_HOSTS = ['185.225.35.181','127.0.0.1']
