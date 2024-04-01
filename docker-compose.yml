@@ -6,6 +6,6 @@ services:
       ports:
           - 8000:8000
       volumes:
-        - .:/yt/db.sqlite3
+        - /lancen_site/lancen/lancen:/yt/db.sqlite3
 
 
