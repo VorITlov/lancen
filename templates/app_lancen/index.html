@@ -31,7 +31,7 @@
                         <div class="container">
                             <div class="d-flex justify-content-lg-arУзнать ценуound justify-content-md-around justify-content-center">
                                 <div class="text_block">
-                                    <h1 class = "mt-5 mb-5 text-white mobile-btn">Занятия с детьми</h1>
+                                    <h1 class = "mt-5 mb-5 text-white mobile-btn">Отметки</h1>
                                     {% comment %} <a href="{% url 'lancen:courses_list' %}" class="btn custom_btn d-sm-none">Читать подробнее</a> {% endcomment %}
                                 </div>
                                 <div class="empty_block"></div>
@@ -45,7 +45,7 @@
                     <div class="slide_img" style = "background-image: url('{% static 'app_lancen/img/slider_tinager.jpg' %}');">
                         <div class="d-flex justify-content-lg-around justify-content-md-around justify-content-center">
                             <div class="text_block">
-                                <h1 class = "mt-5 mb-5 text-white mobile-btn">Занятия с подростками</h1>
+                                <h1 class = "mt-5 mb-5 text-white mobile-btn">Данные о баллах</h1>
                                 {% comment %} <a href="{% url 'lancen:courses_list' %}" class="btn custom_btn d-lg-block d-sm-none">Читать подробнее</a> {% endcomment %}
                             </div>
                             <div class="empty_block"></div>
@@ -57,7 +57,7 @@
                     <div class="slide_img" style = "background-image: url('{% static 'app_lancen/img/slider_olders.jpg' %}');">
                         <div class="d-flex justify-content-lg-around justify-content-md-around justify-content-center">
                             <div class="text_block">
-                                <h1 class = "mt-5 mb-5 text-white mobile-btn">Занятия со взрослыми</h1>
+                                <h1 class = "mt-5 mb-5 text-white mobile-btn">Данные о посещении</h1>
                                 {% comment %} <a href="{% url 'lancen:courses_list' %}" class="btn custom_btn d-lg-block  d-sm-none">Читать подробнее</a> {% endcomment %}
                             </div>
                             <div class="empty_block"></div>
@@ -82,7 +82,7 @@
 
 {% block content %}
 
-
+{% comment %} 
 <section class = "pt-5 pb-5 text-center">
    
     <h1 class = "my_color_info ">Что такое языковой центр?</h1>
@@ -240,7 +240,7 @@
     </div>
    
 </section>
-
+ {% endcomment %}
 
 
 {% endblock content %} 
@@ -248,7 +248,7 @@
 
 
 {% block fluid_window_bottom %}
-
+{% comment %} 
 <style>
     .captcha{
         margin-top:10px;
@@ -289,7 +289,7 @@
  
    
 
-</section>
+</section> {% endcomment %}
 {% endblock fluid_window_bottom %}
 
 

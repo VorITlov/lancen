@@ -51,8 +51,13 @@
                 <td>{{item.first_name}}</td>
                 <td>{{item.group}}</td>
                 <td>
-                    <img  src="{{item.photo.url}}" width = "200" alt="">
-                    
+                    {% if item.photo %}
+                        <img  src="{{item.photo.url}}" width = "200" alt="">
+
+                    {% else %}
+
+                    --
+                    {% endif %}
                 </td>
             </tr>
     

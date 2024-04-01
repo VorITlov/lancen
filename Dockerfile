@@ -24,4 +24,5 @@ RUN pip install -r requirements.txt
 
 USER yt
 
-CMD ["gunicorn","-b","0.0.0.0:8001","lancen.wsgi:application"]
+#CMD ["gunicorn","-b","0.0.0.0:8001","lancen.wsgi:application"]
+

@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load lancen_tags %}
+{% load app_homework_tags %}
+{% load bootstrap5 %}
+
 
 {% block content %}
 
@@ -38,7 +42,21 @@
                 <th>Группа</th>
             </tr>
             {% for item in  object_list %}
-    
+            <tr>
+                <td>{{item.name}}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.date }}</td>
+                <td>
+                    {% get_files item.id as files %}
+
+                    {% for f in  files %}
+                        <a href="{{f.file.url}}">{{f.file.url}}</a>
+                    {% empty %}
+                    --
+                    {% endfor %}
+                </td>
+                <td>Группа</td>
+            </tr>
     
             {% empty %}
             <tr>

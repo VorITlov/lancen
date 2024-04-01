@@ -1,11 +1,11 @@
-version: "3.9"
-
+version: '3.8'
 services:
-  youtube_project:
-    image: yt_django:latest
-    container_name: yt_django
-    volumes:
-      - static_volume:/yt/static
-      - media_volume:/yt/media
-    command: >
-      bash -c "./manage.py collectstatic --noinput && ./manage.py migrate  && ./manage.py runserver 0.0.0.0:8000"
+   web:
+      build: .
+      command: python manage.py runserver 0.0.0.0:8000
+      ports:
+          - 8000:8000
+      volumes:
+        - ~/lancen_data:/yt/db.sqlite3
+
+
