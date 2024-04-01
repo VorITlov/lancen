@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.http import HttpRequest, HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import AuthenticationForm
 from django.urls.base import reverse, reverse_lazy
@@ -25,6 +26,11 @@ class LoginUser(DataMixin,LoginView):
         context = super().get_context_data(**kwargs)
         data_mixin_context = self.get_user_context(title = "Авторизация")
         return dict(list(context.items()) + list(data_mixin_context.items()))
+    
+    def get(self,request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('profiles:personal_area')
+        return super().get(request, *args, **kwargs)
 
     def get_success_url(self):
         return reverse_lazy('profiles:personal_area')

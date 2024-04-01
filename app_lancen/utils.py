@@ -11,7 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.http import Http404
 
 menu = [
-    {'title' : "Главная", 'link' : 'lancen:index'},
+    #{'title' : "Главная", 'link' : 'lancen:index'},
     # {'title' : "Программы обучения", 'link' : 'lancen:courses_list'},
     # {'title' : "Контакты", 'link' : 'lancen:contact'},
     # {'title': "Акции", 'link' : "lancen:stock"},
