@@ -9,6 +9,6 @@ services:
       volumes:
          - type: bind
            source: .
-           target: yt
+           target: /yt
 
 
