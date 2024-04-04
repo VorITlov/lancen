@@ -4,7 +4,7 @@ from django import template
 from app_journal.models import Attendance, Mark
 from app_profiles.models import Student
 from app_timetable.models import TimeTable
-
+from app_abonements.models import StudentPaymenatLessons
 
 register = template.Library()
 
@@ -40,3 +40,9 @@ def mark_sum(*args, **kwargs):
     for item in args:
         sum += item
     return sum
+
+@register.simple_tag()
+def is__not_permission_for_attendance(id_student, id_lesson):
+    """есть ли занятие в доступных занятиях у ученика"""
+    std_payment_lesson = StudentPaymenatLessons.objects.filter(lesson_id = id_lesson, payment_abonement__student__id = id_student)
+    return False if std_payment_lesson else True

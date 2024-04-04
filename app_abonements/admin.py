@@ -17,7 +17,7 @@ class StudentPaymenatLessonsAdmin(admin.ModelAdmin):
 
     @admin.display(description="Дата занятия", empty_value='???')
     def lesson_date(self, obj):
-        return obj.lesson.date
+        return f"{obj.lesson.date} в {obj.lesson.group} группе"
 
     @admin.display(description="Студент", empty_value='???')
     def stduent_surname_name(self, obj):
@@ -26,7 +26,8 @@ class StudentPaymenatLessonsAdmin(admin.ModelAdmin):
 
     @admin.display(description="Абонемент", empty_value='???')
     def abonement_name(self, obj):
-        return obj.payment_abonement.abonement.name
+        return f"{obj.payment_abonement.abonement.name} {obj.payment_abonement.abonement.amount_lesson} занятий Oплата:({obj.payment_abonement.date_payment})"
+
 
 
 

@@ -70,17 +70,12 @@ class StudentPaymentLesson(DataMixin, LoginRequiredMixin, ListView):
 
         context['breadcrumbs'] = [
             {'link': reverse('profiles:personal_area'), 'title':'Личный кабинет'},
+            {'link' : reverse('abonements:student_abonements'), 'title' : 'Оплаченные абонементы'},
             {'link': '#', 'title': "Занятия доступные мне"}
         ]
 
-        data_mixin_context = self.get_user_context(title = "Оплаченные абонементы")
+        data_mixin_context = self.get_user_context(title = "Доступные занятия")
         return dict(list(context.items()) + list(data_mixin_context.items()))
 
     def get_queryset(self):
-        sort_param = self.request.GET.get("payment_ab")
-
-        if sort_param:
-            query = StudentPaymenatLessons.objects.filter(payment_abonement__student = self.request.user, payment_abonement = sort_param).order_by('-lesson__date')
-        else:
-            query = StudentPaymenatLessons.objects.filter(payment_abonement__student = self.request.user).order_by('-lesson__date')
-        return  query
+       return StudentPaymenatLessons.objects.filter(payment_abonement__student = self.request.user, payment_abonement_id = self.kwargs["id_payment_abonement"]).order_by('-lesson__date')

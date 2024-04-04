@@ -51,7 +51,6 @@ class TeachersJournalList(DataMixin, LoginRequiredMixin, ListView):
 
 class JournalMonthView(DataMixin,TeacherPermission, MonthArchiveView):
     """Отображение журнального листа с оценками и посещаемостью для учителя и администратора"""
-
     template_name = 'app_journal/view-journal.html'
     date_field = "date"
     allow_future = True
@@ -62,7 +61,7 @@ class JournalMonthView(DataMixin,TeacherPermission, MonthArchiveView):
 
 
     def get_queryset(self):
-        return TimeTable.objects.filter(group=self.kwargs['group'])
+        return TimeTable.objects.filter(group=self.kwargs['group']).order_by('date')
 
 
     def get_context_data(self, **kwargs):

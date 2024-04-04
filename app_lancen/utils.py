@@ -37,7 +37,6 @@ student_pers_area_items = [
                 {'title' : 'Мои баллы', "link": "journal:student_marks"},
                 {'title': "Домашние задания", "link": "homework:go_to_stud_hw"},
                 {'title' : "Список приобретённых абонементов", "link": 'abonements:student_abonements'},
-                {'title' : "Список доступных занятий", "link" : 'abonements:student_payment_lessons'},
             ]
 
 

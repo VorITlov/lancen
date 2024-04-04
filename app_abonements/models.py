@@ -38,7 +38,7 @@ class PaymentAbonement(models.Model):
     discount = models.IntegerField(verbose_name="Скидка в рублях (если есть)" , blank=True, null=True)
 
     def __str__(self):
-        return f"{self.student} => {self.abonement}"
+        return f"{self.student.last_name} {self.student.first_name.upper()[0]}. => {self.date_start}  {self.abonement.name}"
 
     class Meta:
         verbose_name = "Оплата абонемента"
