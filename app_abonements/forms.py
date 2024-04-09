@@ -51,8 +51,9 @@ def search_lesson(student, date_start, abonement):
 def create_lesson(lessons_list, abonement):
     for item in lessons_list:
         payment_lesson = StudentPaymenatLessons(lesson = item, payment_abonement = abonement)
-        payment_lesson.save()
-        print("У пользователя сохранилось оплаченное занятие")
+        isset = StudentPaymenatLessons.objects.filter(lesson = item, payment_abonement = abonement)
+        if not isset: payment_lesson.save()
+        
     return False
 
 

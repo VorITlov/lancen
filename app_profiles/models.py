@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from app_lancen.models import *
+#from app_abonements.models import Discount
 
 
 
@@ -26,9 +27,10 @@ class Teacher(User):
 
 
 class Student(User):
-    photo = models.ImageField(upload_to = get_file_path, verbose_name="Фотография", blank = True)
-    group = models.ForeignKey(LearingGroup, on_delete=models.CASCADE, verbose_name="Группа")
-
+    photo      = models.ImageField(upload_to = get_file_path, verbose_name="Фотография", blank = True)
+    group      = models.ForeignKey(LearingGroup, on_delete=models.CASCADE, verbose_name="Группа")
+    date_born   = models.DateField(verbose_name="Дата рождения", blank=True, null=True)
+    discount  = models.ForeignKey("app_abonements.Discount", on_delete=models.RESTRICT, verbose_name="Скидка", blank=True, null=True)
 
     class Meta:
         verbose_name = "Ученик"

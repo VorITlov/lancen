@@ -39,6 +39,7 @@ class PaymentAbonementAdmin(admin.ModelAdmin):
 
     list_display = ('student', 'abonement', 'last_lesson', 'date_need_new_abonement', 'date_start', 'date_payment', 'result_price')
     list_filter = ('student__group', 'student__last_name')
+    ordering = ('student__group', )
 
     @admin.display(empty_value='???', description="Последнее занятие")
     def last_lesson(self, obj):

@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.http.response import  HttpResponseRedirect
 from app_homework.models import FileHomework, Homework
@@ -61,20 +62,18 @@ class HomeworkListStudent(DataMixin,LoginRequiredMixin,  WeekArchiveView):
     allow_future = True
     allow_empty = True
 
-    
-
     def get_context_data(self, **kwargs):
-
         context = super().get_context_data(**kwargs)
-
         context['breadcrumbs'] = [
             {'link': reverse('profiles:personal_area'), 'title':'Личный кабинет'},
             {'link': '#',  'title' : "Домашние задания"}
         ]
-
         data_mixin_context = self.get_user_context(title = "Домашние задания")
-
         return dict(list(context.items()) + list(data_mixin_context.items()))
+    
+    def get_queryset(self):
+        student = Student.objects.get(pk =self.request.user.id)
+        return Homework.objects.filter(journal_list__group = student.group)
 
 
 

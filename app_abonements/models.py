@@ -8,6 +8,12 @@ from django.urls.base import reverse
 # Create your models here.
 
 
+discount_CHOICES = (
+    ('руб', 'руб'),
+    ('%','процент.')
+)
+
+
 class Abonement(models.Model):
 
     name = models.CharField(verbose_name="Название абонемента", max_length=255)
@@ -57,3 +63,13 @@ class StudentPaymenatLessons(models.Model):
 
     def __str__(self):
         return f"{self.lesson.date}: {self.payment_abonement.student}"
+
+
+class Discount(models.Model):
+    discount = models.IntegerField("Значение скидки")
+    value = models.CharField("Величина", choices=discount_CHOICES, max_length=255)
+    class Meta:
+        verbose_name = "Значение скидоки"
+        verbose_name_plural = "Значения скидок"
+    def __str__(self):
+        return f"{self.discount} {self.value}"
