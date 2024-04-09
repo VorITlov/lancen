@@ -8,8 +8,8 @@ from django.urls import reverse
 class TimeTable(models.Model):
     group = models.ForeignKey(LearingGroup, on_delete=models.CASCADE, verbose_name='Для какой группы')
     date = models.DateField(verbose_name='Дата проведения занятия')
-    comment = models.TextField(verbose_name='Комментарий (в случае необходимости)', blank=True)
-    canceled = models.BooleanField(verbose_name="Отмена", blank=True, default=False)
+    comment = models.TextField(verbose_name='Комментарий', blank=True)
+    canceled = models.BooleanField(verbose_name="Отмена (x - отмены нет)", blank=True, default=False)
 
     class Meta:
         verbose_name = "Расписание занятия группы"

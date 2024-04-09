@@ -12,10 +12,24 @@
 
 {% block content %}
 
+<style>
+    .canceled_lesson{
+        background-color: #f8d7da;
+        width:25px;
+        height:25px;
+    }
+</style>
+
+
 
 {% breadcrums breadcrumbs %}
 
 <section class = "pb-5 pt-5">
+
+    <div class="d-flex flex-wrap align-items-center">
+        <div class="canceled_lesson table-danger"></div>
+        <div class="ml-3"> &nbsp;- Занятие было отменено, стоимость не считается</div>
+    </div>
     
     <div class="journal_wrapper">
     
@@ -31,7 +45,7 @@
             {% for item in  object_list %}
     
     
-            <tr>
+            <tr {% if item.lesson.canceled %} class = "table-danger"{% endif %}>
                 <td>{{forloop.counter}}</td>
                 <td>{{item.payment_abonement.abonement.name}}</td>
                 <td>{{ item.payment_abonement.date_start }}</td>
