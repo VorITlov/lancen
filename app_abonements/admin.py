@@ -74,7 +74,8 @@ class PaymentAbonementAdmin(admin.ModelAdmin):
         create_lesson(lessons_list=lessons, abonement=model)
 
        
-    
+
 admin.site.register(Abonement)
 admin.site.register(PaymentAbonement, PaymentAbonementAdmin)
 admin.site.register(StudentPaymenatLessons, StudentPaymenatLessonsAdmin)
+admin.site.register(Discount)

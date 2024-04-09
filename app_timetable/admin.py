@@ -6,7 +6,8 @@ from .models import *
 
 
 class TimeTableAdmin(admin.ModelAdmin):
-    list_display = ('group', 'date', 'comment')
-    list_filter = ('group',)
+    list_display = ('group', 'date','canceled', 'comment')
+    list_filter = ('group', 'canceled')
+    search_fields= ('date',)
 
 admin.site.register(TimeTable, TimeTableAdmin)

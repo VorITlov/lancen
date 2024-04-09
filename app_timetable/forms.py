@@ -83,7 +83,7 @@ class CreateTimetableForm(forms.Form):
             for item in  day_index:
                 if int(item) == int(day_week_iter_day):
                     # print(f"{item} ==> {day_week_iter_day} ==> {iter_day}")
-                    gs = TimeTable(group = group_model, date = iter_day)
+                    gs = TimeTable(group = group_model, date = iter_day, canceled = False)
                     gs.save()            
             #print(f"{datetime.datetime(day = iter_day.day, month = iter_day.month, year = iter_day.year).weekday()}")
 
