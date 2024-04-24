@@ -13,7 +13,7 @@ class StudentPaymenatLessonsAdmin(admin.ModelAdmin):
 
     list_display = ('stduent_surname_name','abonement_name', 'lesson_date')
     #list_filter = ('lesson__group', 'payment_abonement__student__last_name')
-    list_filter = ('payment_abonement__student__last_name',)
+    list_filter = ('payment_abonement__student__last_name', 'payment_abonement__student__group')
 
     @admin.display(description="Дата занятия", empty_value='???')
     def lesson_date(self, obj):
@@ -37,14 +37,14 @@ class PaymentAbonementAdmin(admin.ModelAdmin):
 
     form = PaymentAbonementForm
 
-    list_display = ('student', 'abonement', 'last_lesson', 'date_need_new_abonement', 'date_start', 'date_payment', 'result_price')
+    list_display = ('student', 'abonement',  'date_need_new_abonement', 'date_start', 'date_payment', 'result_price')
     list_filter = ('student__group', 'student__last_name')
     ordering = ('student__group', )
 
-    @admin.display(empty_value='???', description="Последнее занятие")
-    def last_lesson(self, obj):
-        last_date = TimeTable.objects.filter(group = obj.student.group, date__gte = obj.date_start)[obj.abonement.amount_lesson -1]
-        return last_date.date or False
+    # @admin.display(empty_value='???', description="Последнее занятие")
+    # def last_lesson(self, obj):
+    #     last_date = TimeTable.objects.filter(group = obj.student.group, date__gte = obj.date_start)[obj.abonement.amount_lesson -1]
+    #     return last_date.date or False
 
     
     @admin.display(empty_value='???', description="Рекоменд. дата след. оплаты")

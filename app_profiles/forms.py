@@ -11,7 +11,7 @@ class EditStudentForm(forms.ModelForm):
     #password = forms.CharField(label="Пароль", widget=forms.PasswordInput)
     class Meta:
         model = Student
-        fields = ("username", "email", "photo")
+        fields = ("photo",)
 
         
 

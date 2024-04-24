@@ -3,6 +3,7 @@ from django import template
 from app_lancen.utils import get_student, get_teacher
 
 from app_profiles.models import *
+from app_abonements.models import PaymentAbonement
 # from django.template.loader import get_template
 register = template.Library()
 
@@ -38,4 +39,5 @@ def teacher_profile(id_user):
 @register.inclusion_tag('templatetags/app_profiles/student_profile.html')
 def student_profile(id_user):
     student = Student.objects.get(pk = id_user)
-    return {'student': student }
+    abonement_info =  PaymentAbonement.objects.filter(student_id = id_user).order_by('-id')[0]
+    return {'student': student, 'abonement_info': abonement_info}

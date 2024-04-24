@@ -38,7 +38,7 @@
             <tr>
                 <th>№ п/п</th>
                 <th>Принадлежность абонементу</th>
-                <th>Старт абонемента</th>
+                {% comment %} <th>Старт абонемента</th> {% endcomment %}
                 <th>Дата занятия</th>
                 <th>Посещение</th>
             </tr>
@@ -48,7 +48,7 @@
             <tr {% if item.lesson.canceled %} class = "table-danger"{% endif %}>
                 <td>{{forloop.counter}}</td>
                 <td>{{item.payment_abonement.abonement.name}}</td>
-                <td>{{ item.payment_abonement.date_start }}</td>
+                {% comment %} <td>{{ item.payment_abonement.date_start }}</td> {% endcomment %}
                 <td>{{item.lesson.date}}</td>
                 <td>
                     {% is_was id_student=request.user.id id_lesson=item.lesson.id as is_was %}

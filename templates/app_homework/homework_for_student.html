@@ -43,7 +43,7 @@
             {% for item in  object_list %}
             <tr>
                 <td>{{item.name}}</td>
-                <td>{{ item.description }}</td>
+                <td>{% get_links_in_text item.description as descr  %}{{ descr|safe}}</td>
                 <td>{{ item.date }}</td>
                 <td>
                     {% get_files item.id as files %}

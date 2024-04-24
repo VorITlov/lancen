@@ -53,7 +53,7 @@ class StudentAbonementsView(DataMixin, LoginRequiredMixin, ListView):
         return dict(list(context.items()) + list(data_mixin_context.items()))
 
     def get_queryset(self):
-        return  PaymentAbonement.objects.filter(student = self.request.user).order_by('-date_start')
+        return  PaymentAbonement.objects.filter(student = self.request.user).order_by('date_start')
 
     
 
@@ -78,4 +78,4 @@ class StudentPaymentLesson(DataMixin, LoginRequiredMixin, ListView):
         return dict(list(context.items()) + list(data_mixin_context.items()))
 
     def get_queryset(self):
-       return StudentPaymenatLessons.objects.filter(payment_abonement__student = self.request.user, payment_abonement_id = self.kwargs["id_payment_abonement"]).order_by('-lesson__date')
+       return StudentPaymenatLessons.objects.filter(payment_abonement__student = self.request.user, payment_abonement_id = self.kwargs["id_payment_abonement"]).order_by('lesson__date')

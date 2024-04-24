@@ -12,6 +12,10 @@
 <section class = "pt-5 pb-5">
     <form action="" method="post" enctype = "multipart/form-data">
         {% csrf_token %}
+        {% if object.photo %}
+        <h3>Фотография на данный момент</h3>
+        <img src="{{object.photo.url}}" alt="" width="150px" height = "150px">
+        {% endif %}
         {% bootstrap_form form %}
         <button type = "submit" class = "btn my_bg_info text-white">Сохранить</button>
     </form>

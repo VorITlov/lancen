@@ -25,28 +25,30 @@
     
         <table class = "table table-light table-hover mt-5">
             <tr>
-                <th>Дата старта</th>
-                <th>Название абонемента</th>
+                <th>№ п.п</th>
+                {% comment %} <th>Дата старта</th> {% endcomment %}
+                {% comment %} <th>Название абонемента</th>
                 <th>Кол-во занятий</th>
                 <th>Стоимость</th>
                 <th>Скидка</th>
-                <th>Итоговая цена</th>
-                <th>Дата оплаты</th>
-                <th>Последнее занятие</th>
+                <th>Итоговая цена</th> {% endcomment %}
+                <th>Дата </th>
+                {% comment %} <th>Последнее занятие</th> {% endcomment %}
                 <th>Доступные занятия</th>
             </tr>
             {% for item in  object_list %}
     
     
             <tr>
-                <td>{{item.date_start}}</td>
-                <td>{{item.abonement.name}}</td>
+                <td>{{ forloop.counter }}</td>
+                {% comment %} <td>{{item.date_start}}</td> {% endcomment %}
+                {% comment %} <td>{{item.abonement.name}}</td>
                 <td>{{item.abonement.amount_lesson}}</td>
                 <td>{{item.abonement.price}}</td>
                 <td>{% if item.discount %} {{ item.discount }}  {% else %} --{% endif %}</td>
-                <td>{% if item.discount %} {% get_result_price_value item.abonement.price item.discount as res %} {{res}}  {% else %} {{item.abonement.price}}  {% endif %}</td>
+                <td>{% if item.discount %} {% get_result_price_value item.abonement.price item.discount as res %} {{res}}  {% else %} {{item.abonement.price}}  {% endif %}</td> {% endcomment %}
                 <td>{{item.date_payment}}</td>
-                <td>{% get_last_lesson_abonement item  as last_lesson_date%} {{last_lesson_date}}</td>
+                {% comment %} <td>{% get_last_lesson_abonement item  as last_lesson_date%} {{last_lesson_date}}</td> {% endcomment %}
                 <td><a href="{% url 'abonements:student_payment_lessons' id_payment_abonement=item.id  %}">Перейти</a></td>
             </tr>
     

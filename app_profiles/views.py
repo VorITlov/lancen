@@ -55,8 +55,7 @@ class PersonalArea(DataMixin, LoginRequiredMixin, TemplateView):
         
         if self.request.user.groups.filter(name='student').exists():
             context["student_user"] = Student.objects.get(id = self.request.user.id)
-
-
+  
         return dict(list(context.items()) + list(data_mixin_context.items()))
 
 
@@ -95,8 +94,8 @@ class ShowStudentForTeacher(DataMixin,LoginRequiredMixin, ListView):
         return dict(list(context.items()) + list(data_mixin_context.items()))
 
 
-class EditStudentProfile(DataMixin,TeacherPermission, UpdateView):
-    """Редактирование профиля учителя"""
+class EditStudentProfile(DataMixin,UpdateView):
+    """Редактирование профиля студента"""
 
     model = Student
     form_class = EditStudentForm
@@ -121,9 +120,7 @@ class EditStudentProfile(DataMixin,TeacherPermission, UpdateView):
 
 class ChangePassword(DataMixin, LoginRequiredMixin, FormView):
     """Смена пароля"""
-    
     success_url = reverse_lazy('profiles:personal_area')
-    
     def get_form(self) :
         form = PasswordChangeForm(user=self.request.user, data=self.request.POST)
         return  form
