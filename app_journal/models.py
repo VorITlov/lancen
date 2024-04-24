@@ -40,6 +40,7 @@ class Mark(models.Model):
     behavior =models.IntegerField(verbose_name = "Поведение",  choices=TITLE_CHOICES)
     homework = models.IntegerField(verbose_name="Домашнее задание",  choices=TITLE_CHOICES)
     extra = models.IntegerField(verbose_name="EXTRA",  choices=TITLE_CHOICES)
+    additional = models.IntegerField(verbose_name="Дополнительные баллы", blank=True, null=True)
     
 
     class Meta:

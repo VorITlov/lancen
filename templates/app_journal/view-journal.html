@@ -92,7 +92,7 @@
                             {% for m in marks  %}
                                 
                                 <div class = "mark_view" onclick = "update_mark({{m.id}} , {{lesson.group.id}}, {{lesson.date|date:"Y"}}, {{lesson.date|date:"m"}});">
-                                    {% mark_sum m.work_on_lesson m.behavior m.homework m.extra %}
+                                    {% mark_sum m.work_on_lesson m.behavior m.homework m.extra m.additional %}
                                 </div>
                             {% empty %}
                                 <div class = "mark_view" onclick = "expose_mark({{student.id}},{{lesson.id}},'{{lesson.date|date:"Y-m-d"}}');">*</div>

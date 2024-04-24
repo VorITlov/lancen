@@ -57,10 +57,14 @@ class PaymentAbonementAdmin(admin.ModelAdmin):
     def result_price(self, obj):
         price = obj.abonement.price
 
-        if obj.discount:
-            return f"{price - obj.discount}р. (Скидка: {obj.discount})"
-        else:
-            return f"{price}р. (Скидки нет)"
+        discount = obj.student.discount
+        if discount:
+            if discount.value == "руб":
+                price = int(price) - int(discount.discount)
+            else:
+                price = int(price) - ((int(price) / 100 * int(discount.discount)))
+          
+        return f"{price} р."
 
 
     def save_model(self, request, obj, form, change):

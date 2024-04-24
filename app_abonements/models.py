@@ -41,7 +41,7 @@ class PaymentAbonement(models.Model):
     abonement = models.ForeignKey(Abonement , on_delete=models.CASCADE, verbose_name="Какой абонемент")
     date_start = models.DateField(verbose_name="Дата старта абонемента")
     date_payment = models.DateField(verbose_name="Дата оплаты абонемента абонемента")
-    discount = models.IntegerField(verbose_name="Скидка в рублях (если есть)" , blank=True, null=True)
+    # discount = models.IntegerField(verbose_name="Скидка в рублях (если есть)" , blank=True, null=True)
 
     def __str__(self):
         return f"{self.student.last_name} {self.student.first_name.upper()[0]}. => {self.date_start}  {self.abonement.name}"

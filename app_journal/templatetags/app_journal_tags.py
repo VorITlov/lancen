@@ -38,7 +38,7 @@ def get_marks(id_student, id_lesson):
 def mark_sum(*args, **kwargs):
     sum = 0
     for item in args:
-        sum += item
+        if isinstance(item, int): sum += item
     return sum
 
 @register.simple_tag()

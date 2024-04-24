@@ -29,6 +29,7 @@
                 <th>Домашнее задание</th>
                 <th>Поведение</th>
                 <th>EXTRA</th>
+                <th>Доп баллы</th>
                 <th>Сумма</th>
             </tr>
             {% for item in  object_list %}
@@ -40,8 +41,9 @@
                 <td>{{item.homework}}</td>
                 <td>{{item.behavior}}</td>
                 <td>{{item.extra}}</td>
+                <td>{% if item.additional %} {{item.additional}} {% else %}0{% endif %}</td>
                 <td class="text-danger">
-                    {% mark_sum item.work_on_lesson item.behavior item.homework item.extra %}
+                    {% mark_sum item.work_on_lesson item.behavior item.homework item.extra item.additional %}
                 </td>
     
             </tr>
